@@ -5,7 +5,6 @@ import * as auth from './auth.js';
 
 import logo from '../images/chalees-min-logo.png';
 import logoHighDpi from '../images/chalees-min-logo@2x.png';
-import mobileMenuIcon from '../images/menu-icon.svg';
 
 const Header = React.createClass({
   showFacebookLoginPrompt: () => auth.showFacebookLoginPrompt(),
@@ -20,25 +19,15 @@ const Header = React.createClass({
     await auth.signOut();
   },
   render: function () {
-    const menuContents = (
-      <ul className="pure-menu-children">
-        <li className="pure-menu-item">
-          <a className="pure-menu-link" href="#" onClick={this.logOut}>Sign Out</a>
-        </li>
-      </ul>
-    );
-    
     const userSection = this.state.name ? (
       <ul className="pure-menu-list">
-        <li className="user-menu pure-menu-item pure-menu-has-children pure-menu-allow-hover main-nav-user-menu hidden-xs">
+        <li className="user-menu pure-menu-item pure-menu-has-children pure-menu-allow-hover main-nav-user-menu">
           <a className="pure-menu-link" href="#">{this.state.name}</a>
-          {menuContents}
-        </li>
-        <li className="user-menu pure-menu-item pure-menu-allow-hover main-nav-user-menu hidden-sm hidden-md hidden-lg hidden-xl">
-          <a className="pure-menu-link" href="#" style={{paddingRight: 0, paddingLeft: 0}}>
-            <img src={mobileMenuIcon} style={{height: '100%', padding: 12}} />
-          </a>
-          {menuContents}
+          <ul className="pure-menu-children">
+            <li className="pure-menu-item">
+              <a className="pure-menu-link" href="#" onClick={this.logOut}>Sign Out</a>
+            </li>
+          </ul>
         </li>
       </ul>
     ) : (

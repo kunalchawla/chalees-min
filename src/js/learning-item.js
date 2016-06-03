@@ -9,6 +9,38 @@ import ImageContent from './image-content.js';
 
 import styleConstants from './style-constants.js';
 
+const learningItemStyle = {
+  display: 'flex',
+  justifyContent: 'flex-start',
+  alignItems: 'flex-start',
+  padding: '1.25em 1.25em',
+  marginTop: '1.5em',
+  background: 'white',
+  border: '1px solid #E0E0E0',
+  borderRadius: 5,
+};
+
+
+const timeContainerStyle = {
+  marginLeft: '1em',
+  minWidth: '4em',
+  padding: '0.5em 0',
+  color: '#EEE',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  backgroundColor: styleConstants.chaleesPurple,
+};
+
+const headerStyle = {
+  display: 'flex',
+  alignItems: 'center',
+  flexDirection: 'row-reverse',
+}
+const infoContainerStyle = {
+  width: '100%',
+};
+
 const kinds = {
   'video': VideoInstruction,
   'textResponse': TextResponse,
@@ -28,22 +60,19 @@ const LearningItem = (props) => {
   const Child = kinds[props.kind];
   const content = Child ? <Child {...props} /> : props.children;
   return (
-    <div className="learning-item">
+    <div style={learningItemStyle}>
       <div style={{width: '100%'}}>
-        <div className="learning-item-header">
-          {props.presenterImagePath ? (
-            <img style={{marginRight: 15}} src={"https://chalees-min.imgix.net" + props.presenterImagePath + "?w=34&h=44"} />
-          ) : null}
-          <div style={{width: '100%'}}>
-            <h3 style={{margin: 0}}>{props.title}</h3>
-          </div>
-          <div className="learning-item-time">
+        <div style={headerStyle}>
+          <div style={timeContainerStyle} className="learning-item-time">
             <div style={{fontWeight: 'bold', marginRight: '0.25em'}}>
               {props.time}
             </div>
             <div>
               Min
             </div>
+          </div>
+          <div style={infoContainerStyle}>
+            <h3 style={{margin: 0}}>{props.title}</h3>
           </div>
         </div>
         <Markdown source={props.instructions || ''} renderers={{'Link': linkRenderer}}/>
