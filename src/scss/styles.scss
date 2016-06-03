@@ -210,6 +210,7 @@ div[class*="pure-u-"] {
 
   }
 
+  
   // Use a larger header on desktop widths
   @media (min-width: 48em) {
     height: 3.5em;
@@ -219,6 +220,13 @@ div[class*="pure-u-"] {
     .pure-menu-link {
       height: $height-desktop;
       line-height: $height-desktop;
+    }
+  }
+  
+  // And a smaller logo on small phones
+  @media (max-width: 35.45em) {
+    .header-brand .header-brand-logo {
+      height: 1.1em;
     }
   }
 }
@@ -289,3 +297,79 @@ div[class*="pure-u-"] {
   text-align: center;
 }
 
+
+// =======================
+// = Chapter Page Styles =
+// =======================
+
+.learning-item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 1.25em 1.25em;
+  margin-top: 1.5em;
+  background: white;
+  border: 1px solid #E0E0E0;
+  border-radius: 5px;
+}
+
+.learning-item-header {
+  display: flex;
+  align-items: center,
+}
+
+.learning-item-time {
+  margin-left: 1em;
+  min-width: 4em;
+  padding: 0.5em 0;
+  color: #EEE;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $chalees-purple;
+}
+
+
+
+// =========
+// = Forms =
+// =========
+
+.pure-input {
+  border: 1px solid hsl(0, 0, 75%);
+}
+
+
+// ===========
+// = Utility =
+// ===========
+
+@media (max-width: 35.45em) {
+  .hidden-xs {
+    display: none !important;
+  }
+}
+
+@media (min-width: 35.5em) and (max-width: 47.95em) {
+  .hidden-sm {
+    display: none !important;
+  }
+}
+
+@media (min-width: 48em) and (max-width: 63.95em) {
+  .hidden-md {
+    display: none !important;
+  }
+}
+
+@media (min-width: 64em) and (max-width: 79.95em) {
+  .hidden-lg {
+    display: none !important;
+  }
+}
+
+@media (min-width: 80em) {
+  .hidden-xl {
+    display: none !important;
+  }
+}
